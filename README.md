@@ -73,9 +73,8 @@ Before starting, ensure you have the following prerequisites:
 2. Create a new **build project**:
    - Choose your **GitHub** repository as the source.
    - In the **buildspec.yml** file (which should be in the root of your repository), configure the build process for the Java web app. Example `buildspec.yml`:
-
-     ```yaml
-version: 0.2
+```
+     version: 0.2
 
 phases:
   install:
@@ -98,8 +97,8 @@ artifacts:
   files:
     - target/nextwork-web-project.war
   discard-paths: no
+  ```
 
-     ```
 3. Set up the build environment, including linking **AWS CodeBuild** to **AWS CodeArtifact** to pull dependencies.
 
 ### Step 5: Set Up AWS CodeDeploy
