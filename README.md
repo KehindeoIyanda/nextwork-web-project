@@ -1,4 +1,3 @@
-Certainly! Below is a professional and comprehensive `README.md` documentation for a Java Web App deployment with AWS CI/CD, incorporating all the technologies you requested such as **Amazon EC2**, **key pairs**, **VS Code**, **GitHub**, **AWS CodeArtifact**, **AWS CodeBuild**, **AWS CodeDeploy**, and **AWS CodePipeline**.
 
 ```markdown
 # Java Web App Deployment with AWS CI/CD
