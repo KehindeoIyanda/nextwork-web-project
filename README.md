@@ -75,26 +75,30 @@ Before starting, ensure you have the following prerequisites:
    - In the **buildspec.yml** file (which should be in the root of your repository), configure the build process for the Java web app. Example `buildspec.yml`:
 
      ```yaml
-     version: 0.2
-     phases:
-       install:
-         runtime-versions:
-           java: openjdk8
-         commands:
-           - echo Installing dependencies...
-           - mvn install
-       build:
-         commands:
-           - echo Building the Java Web App...
-           - mvn package
-       post_build:
-         commands:
-           - echo Build complete!
-           - echo Creating application version...
-           - aws s3 cp target/*.jar s3://<your-s3-bucket>/<your-app-version>.jar
-     artifacts:
-       files:
-         - target/*.jar
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+      - echo Initializing environment
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 123456789012 --region us-east-2 --query authorizationToken --output text`
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn -s settings.xml compile
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn -s settings.xml package
+artifacts:
+  files:
+    - target/nextwork-web-project.war
+  discard-paths: no
+
      ```
 3. Set up the build environment, including linking **AWS CodeBuild** to **AWS CodeArtifact** to pull dependencies.
 
