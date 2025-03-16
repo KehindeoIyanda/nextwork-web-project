@@ -136,4 +136,3 @@ With the integration of **GitHub** and **VS Code**, developers can easily push c
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 ```
 
-This Markdown file is ready for use as documentation, formatted according to your request.
